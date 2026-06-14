@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bolão Brasil x Haiti</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+  <header class="topo">
+    <div>
+      <p class="tag">Bolão Copa do Mundo</p>
+      <h1>Brasil x Haiti</h1>
+      <p class="sub">Palpite único por CPF • Aposta de R$ 10,00</p>
+    </div>
+
+    <div class="card-jogo">
+      <strong>Jogo pré-configurado</strong>
+      <span>Brasil 🇧🇷 x 🇭🇹 Haiti</span>
+      <small>Valor: R$ 10,00</small>
+      <button type="button" onclick="alternarAdmin()" class="btn-secundario btn-admin-topo">Entrar admin</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card destaque">
+      <h2>Fazer aposta</h2>
+
+      <p class="aviso">
+        Faça seu palpite e realize o Pix de <strong>R$ 10,00</strong>.
+        O pagamento será conferido manualmente pelo administrador.
+      </p>
+
+      <div class="pix-box">
+        <span>Chave Pix</span>
+        <strong id="pixKey">05605646192</strong>
+        <button type="button" onclick="copiarPix()">Copiar Pix</button>
+      </div>
+
+      <form id="formAposta">
+        <div class="grid">
+          <label>
+            Nome completo
+            <input id="nome" type="text" required minlength="3" placeholder="Ex: João Silva" />
+          </label>
+
+          <label>
+            CPF
+            <input id="cpf" type="text" required inputmode="numeric" maxlength="14" placeholder="000.000.000-00" />
+          </label>
+
+          <label>
+            WhatsApp
+            <input id="whatsapp" type="text" required inputmode="tel" placeholder="(66) 99999-9999" />
+          </label>
+        </div>
+
+        <div class="placar">
+          <label>
+            Brasil
+            <input id="brasil" type="number" required min="0" max="20" value="0" />
+          </label>
+
+          <span>x</span>
+
+          <label>
+            Haiti
+            <input id="haiti" type="number" required min="0" max="20" value="0" />
+          </label>
+        </div>
+
+        <button class="btn-principal" type="submit">Confirmar aposta</button>
+      </form>
+    </section>
+
+    <section id="comprovante" class="tela-comprovante oculto" aria-modal="true" role="dialog">
+      <div class="card comprovante">
+        <h2>Comprovante da aposta</h2>
+        <div id="dadosComprovante"></div>
+
+        <div class="acoes-comprovante">
+          <button type="button" onclick="window.print()" class="btn-principal">Imprimir</button>
+          <button type="button" onclick="fecharComprovante()" class="btn-secundario">Voltar</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="linha-titulo">
+        <h2>Lista pública de palpites</h2>
+        <span id="totalPublico">0 apostas</span>
+      </div>
+
+      <div class="table-wrap tabela-publica">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Palpite</th>
+              <th>Status</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody id="listaPublica"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card admin">
+      <div class="linha-titulo">
+        <h2>Painel administrativo</h2>
+      </div>
+
+      <div id="adminLogin" class="oculto">
+        <p class="aviso">
+          Informe o usuario e senha do administrador.
+          Essa senha fica no arquivo JavaScript, então não é segura para produção.
+        </p>
+
+        <div class="admin-login-grid">
+          <input id="usuarioAdmin" type="text" placeholder="Usuario" autocomplete="username" />
+          <input id="senhaAdmin" type="password" placeholder="Senha" autocomplete="current-password" />
+        </div>
+        <button onclick="loginAdmin()" class="btn-principal">Acessar painel</button>
+      </div>
+
+      <div id="adminArea" class="oculto">
+        <div class="metricas">
+          <div>
+            <span>Total de apostas</span>
+            <strong id="admTotal">0</strong>
+          </div>
+
+          <div>
+            <span>Pagas</span>
+            <strong id="admPagas">0</strong>
+          </div>
+
+          <div>
+            <span>Arrecadado confirmado</span>
+            <strong id="admArrecadado">R$ 0,00</strong>
+          </div>
+        </div>
+
+        <div class="botoes-admin">
+          <button onclick="exportarExcel()" class="btn-principal">Exportar para Excel</button>
+          <button onclick="limparTudo()" class="btn-perigo">Limpar testes</button>
+          <button onclick="sairAdmin()" class="btn-secundario">Sair</button>
+        </div>
+
+        <div class="table-wrap tabela-admin">
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>WhatsApp</th>
+                <th>Palpite</th>
+                <th>Status</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody id="listaAdmin"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Bolão Brasil x Haiti</strong>
+    <span>Valor da aposta: R$ 10,00</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
