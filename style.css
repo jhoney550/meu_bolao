@@ -1,0 +1,688 @@
+:root {
+  --bg: #07111f;
+  --card: #101d2f;
+  --card2: #14243a;
+  --text: #f5f7fb;
+  --muted: #a8b3c7;
+  --green: #19c37d;
+  --yellow: #f8c537;
+  --red: #ff5c5c;
+  --border: rgba(255,255,255,.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle at top, #113b24, var(--bg) 45%);
+  color: var(--text);
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.topo {
+  max-width: 1100px;
+  margin: auto;
+  padding: 38px 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.tag {
+  color: var(--yellow);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .08em;
+  margin: 0 0 8px;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(36px, 8vw, 72px);
+  line-height: .95;
+  margin-bottom: 10px;
+}
+
+.sub,
+.aviso,
+small,
+footer {
+  color: var(--muted);
+}
+
+.card-jogo,
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 18px 60px rgba(0,0,0,.22);
+}
+
+.card-jogo {
+  padding: 22px;
+  min-width: 260px;
+  display: grid;
+  align-content: center;
+  gap: 8px;
+}
+
+.card-jogo span {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 18px;
+  display: grid;
+  gap: 18px;
+}
+
+.card {
+  padding: 22px;
+  background-color: var(--card);
+}
+
+.destaque {
+  border-color: rgba(25,195,125,.45);
+}
+
+.pix-box {
+  background: #07111f;
+  border: 1px dashed rgba(248,197,55,.7);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.pix-box span {
+  color: var(--muted);
+}
+
+.pix-box strong {
+  font-size: 22px;
+  letter-spacing: .04em;
+  overflow-wrap: anywhere;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+input {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: #07111f;
+  color: var(--text);
+  padding: 13px 14px;
+  border-radius: 12px;
+  outline: none;
+  font-size: 16px;
+}
+
+input:focus {
+  border-color: var(--green);
+}
+
+.placar {
+  margin: 18px 0;
+  display: flex;
+  align-items: end;
+  gap: 16px;
+}
+
+.placar label {
+  max-width: 130px;
+}
+
+.placar input {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.placar span {
+  font-size: 34px;
+  font-weight: 900;
+  padding-bottom: 8px;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.btn-principal {
+  background: var(--green);
+  color: #04120c;
+}
+
+.btn-secundario,
+.pix-box button {
+  background: var(--card2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-whatsapp {
+  background: #25d366;
+  color: #04120c;
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 43px;
+  border-radius: 12px;
+  padding: 12px 16px;
+  background: var(--card2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.btn-perigo {
+  background: rgba(255, 92, 92, .14);
+  color: var(--red);
+  border: 1px solid rgba(255, 92, 92, .45);
+}
+
+.linha-titulo {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.botoes-admin {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.admin-menu {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 18px 0;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.config-box {
+  display: grid;
+  gap: 14px;
+}
+
+.preview-jogo {
+  background: #07111f;
+  border: 1px dashed rgba(248,197,55,.7);
+  border-radius: 16px;
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.preview-jogo span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.preview-jogo strong {
+  font-size: 24px;
+}
+
+.admin-login-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.admin-page {
+  min-height: 100vh;
+}
+
+.admin-container {
+  min-height: 100vh;
+  align-content: center;
+}
+
+.admin-login-card {
+  width: min(640px, 100%);
+  justify-self: center;
+}
+
+.admin-area-card {
+  width: 100%;
+}
+
+.admin-login-card h1 {
+  font-size: clamp(38px, 7vw, 58px);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 13px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  color: var(--muted);
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.status-pago {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.status-pendente {
+  color: var(--yellow);
+  font-weight: 800;
+}
+
+.tela-comprovante {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  padding: 18px;
+  background: rgba(7, 17, 31, .82);
+  backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+}
+
+.comprovante {
+  width: min(560px, 100%);
+  max-height: calc(100vh - 36px);
+  overflow-y: auto;
+}
+
+.acoes-comprovante {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.qr-pix-box {
+  background: #07111f;
+  border: 1px dashed rgba(248,197,55,.7);
+  border-radius: 16px;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  margin-top: 14px;
+  padding: 14px;
+  text-align: center;
+}
+
+.qr-pix-box span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.qr-pix-box img {
+  width: min(260px, 100%);
+  aspect-ratio: 1;
+  background: white;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.metricas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.metricas div {
+  background: #07111f;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.metricas span {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.metricas strong {
+  font-size: 24px;
+}
+
+.oculto {
+  display: none !important;
+}
+
+footer {
+  text-align: center;
+  padding: 24px 18px 38px;
+  display: grid;
+  gap: 6px;
+}
+
+@media (max-width: 760px) {
+  .topo {
+    display: grid;
+    padding: 24px 14px 10px;
+    gap: 14px;
+  }
+
+  h1 {
+    font-size: clamp(40px, 16vw, 58px);
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .container {
+    padding: 14px;
+    gap: 14px;
+  }
+
+  .card,
+  .card-jogo {
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .card-jogo {
+    min-width: 0;
+  }
+
+  .card-jogo span {
+    font-size: 20px;
+  }
+
+  .pix-box {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-radius: 14px;
+  }
+
+  .pix-box strong {
+    font-size: 20px;
+  }
+
+  .grid,
+  .metricas,
+  .admin-login-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .linha-titulo {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .placar {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .placar label {
+    max-width: none;
+    width: min(120px, 38vw);
+  }
+
+  .placar input {
+    font-size: 24px;
+  }
+
+  button,
+  .btn-principal,
+  .btn-secundario,
+  .btn-whatsapp,
+  .btn-perigo,
+  .pix-box button,
+  .btn-link {
+    width: 100%;
+  }
+
+  .botoes-admin,
+  .admin-menu,
+  .acoes-comprovante {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .table-wrap {
+    overflow-x: visible;
+  }
+
+  table,
+  thead,
+  tbody,
+  tr,
+  th,
+  td {
+    display: block;
+    width: 100%;
+  }
+
+  table {
+    min-width: 0;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    background: #07111f;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  td {
+    display: grid;
+    grid-template-columns: minmax(86px, 34%) 1fr;
+    gap: 10px;
+    align-items: start;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    overflow-wrap: anywhere;
+  }
+
+  td:last-child {
+    border-bottom: 0;
+  }
+
+  td::before {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .tabela-publica td:nth-child(1)::before,
+  .tabela-admin td:nth-child(1)::before {
+    content: "Nome";
+  }
+
+  .tabela-publica td:nth-child(2)::before {
+    content: "Palpite";
+  }
+
+  .tabela-publica td:nth-child(3)::before,
+  .tabela-admin td:nth-child(5)::before {
+    content: "Status";
+  }
+
+  .tabela-publica td:nth-child(4)::before {
+    content: "Data";
+  }
+
+  .tabela-admin td:nth-child(2)::before {
+    content: "CPF";
+  }
+
+  .tabela-admin td:nth-child(3)::before {
+    content: "WhatsApp";
+  }
+
+  .tabela-admin td:nth-child(4)::before {
+    content: "Palpite";
+  }
+
+  .tabela-admin td:nth-child(6)::before {
+    content: "Acao";
+  }
+
+  footer {
+    padding-bottom: 28px;
+  }
+}
+
+@media print {
+  @page {
+    margin: 8mm;
+  }
+
+  html,
+  body {
+    width: 100%;
+    min-height: 0;
+    overflow: visible;
+    background: white;
+  }
+
+  .topo,
+  footer,
+  main > section:not(#comprovante) {
+    display: none !important;
+  }
+
+  body,
+  main,
+  #comprovante,
+  #comprovante .comprovante,
+  #comprovante .comprovante * {
+    visibility: visible;
+  }
+
+  .container {
+    display: block;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #comprovante {
+    position: static;
+    inset: auto;
+    display: block !important;
+    padding: 0;
+    background: white;
+    backdrop-filter: none;
+  }
+
+  #comprovante .comprovante {
+    width: 100%;
+    max-height: none;
+    overflow: visible;
+    padding: 0;
+    background: white;
+    color: black;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    font-size: 12px;
+    line-height: 1.25;
+  }
+
+  #comprovante h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  #comprovante p {
+    margin: 0 0 5px;
+  }
+
+  #comprovante hr {
+    margin: 8px 0;
+  }
+
+  #comprovante .qr-pix-box {
+    break-inside: avoid;
+    border: 1px solid #bbb;
+    margin-top: 8px;
+    padding: 8px;
+  }
+
+  #comprovante .qr-pix-box img {
+    width: 130px;
+    padding: 0;
+  }
+
+  #comprovante .acoes-comprovante {
+    display: none;
+  }
+}
+
+footer span:last-child { font-size: 13px; opacity: .85; }

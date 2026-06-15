@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bolão Brasil x Haiti</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topo">
+    <div>
+      <p class="tag">Bolão Copa do Mundo</p>
+      <h1 id="tituloJogo">Brasil x Haiti</h1>
+      <p class="sub">Palpite único por CPF • Aposta de R$ 10,00</p>
+    </div>
+
+    <div class="card-jogo">
+      <strong>Jogo configurado</strong>
+      <span id="cardJogoTexto">Brasil x Haiti</span>
+      <small>Valor: R$ 10,00</small>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card destaque">
+      <h2>Fazer aposta</h2>
+
+      <p class="aviso">
+        Faça seu palpite e realize o Pix de <strong>R$ 10,00</strong>.
+        O pagamento será conferido manualmente pelo administrador.
+      </p>
+
+      <div class="pix-box">
+        <span>Chave Pix</span>
+        <strong id="pixKey">05605646192</strong>
+        <button type="button" onclick="copiarPix()">Copiar Pix</button>
+      </div>
+
+      <form id="formAposta">
+        <div class="grid">
+          <label>
+            Nome completo
+            <input id="nome" type="text" required minlength="3" placeholder="Ex: João Silva" />
+          </label>
+
+          <label>
+            CPF
+            <input id="cpf" type="text" required inputmode="numeric" maxlength="14" placeholder="000.000.000-00" />
+          </label>
+
+          <label>
+            WhatsApp
+            <input id="whatsapp" type="text" required inputmode="tel" placeholder="(66) 99999-9999" />
+          </label>
+        </div>
+
+        <div class="placar">
+          <label>
+            <span id="labelTimeCasa">Brasil</span>
+            <input id="brasil" type="number" required min="0" max="20" value="0" />
+          </label>
+
+          <span>x</span>
+
+          <label>
+            <span id="labelTimeFora">Haiti</span>
+            <input id="haiti" type="number" required min="0" max="20" value="0" />
+          </label>
+        </div>
+
+        <button class="btn-principal" type="submit">Confirmar aposta</button>
+      </form>
+    </section>
+
+    <section id="comprovante" class="tela-comprovante oculto" aria-modal="true" role="dialog">
+      <div class="card comprovante">
+        <h2>Comprovante da aposta</h2>
+        <div id="dadosComprovante"></div>
+        <div id="qrPixBox" class="qr-pix-box oculto">
+          <span>QR Code Pix</span>
+          <img id="qrPixImagem" src="" alt="QR Code Pix para pagamento" />
+          <small>Escaneie para pagar via Pix.</small>
+        </div>
+
+        <div class="acoes-comprovante">
+          <button type="button" onclick="gerarQrCodePix()" class="btn-secundario">Gerar QR Code Pix</button>
+          <button type="button" onclick="abrirWhatsappComprovante()" class="btn-whatsapp">Enviar pelo WhatsApp</button>
+          <button type="button" onclick="window.print()" class="btn-principal">Imprimir</button>
+          <button type="button" onclick="fecharComprovante()" class="btn-secundario">Voltar</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="linha-titulo">
+        <h2>Lista pública de palpites</h2>
+        <span id="totalPublico">0 apostas</span>
+      </div>
+
+      <div class="table-wrap tabela-publica">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Palpite</th>
+              <th>Status</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody id="listaPublica"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong id="footerJogo">Bolão Brasil x Haiti</strong>
+    <span>Valor da aposta: R$ 10,00</span>
+    <span>© 2026 — Desenvolvido por Jhoney Souza</span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
