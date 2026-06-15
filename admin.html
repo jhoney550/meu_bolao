@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | Bolão Brasil x Haiti</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body class="admin-page">
+  <main class="container admin-container">
+    <section id="adminLogin" class="card admin-login-card">
+      <p class="tag">Área administrativa</p>
+      <h1>Painel do bolão</h1>
+      <p class="sub">Entre com usuário e senha para conferir pagamentos, exportar apostas e configurar o jogo.</p>
+
+      <div class="admin-login-grid">
+        <label>
+          Usuário
+          <input id="usuarioAdmin" type="text" placeholder="Usuario" autocomplete="username" />
+        </label>
+
+        <label>
+          Senha
+          <input id="senhaAdmin" type="password" placeholder="Senha" autocomplete="current-password" />
+        </label>
+      </div>
+
+      <div class="botoes-admin">
+        <button onclick="loginAdmin()" class="btn-principal">Acessar painel</button>
+        <a class="btn-link" href="index.html">Voltar para apostas</a>
+      </div>
+    </section>
+
+    <section id="adminArea" class="card admin admin-area-card oculto">
+      <div class="linha-titulo">
+        <div>
+          <p class="tag">Área administrativa</p>
+          <h2>Painel do sistema</h2>
+        </div>
+        <a class="btn-link" href="index.html">Página principal</a>
+      </div>
+
+      <nav class="admin-menu" aria-label="Menu administrativo">
+        <button id="btnAbaPainel" type="button" class="btn-principal" onclick="mostrarAbaAdmin('painel')">Painel administrativo</button>
+        <button id="btnAbaConfig" type="button" class="btn-secundario" onclick="mostrarAbaAdmin('config')">Configurar bolão</button>
+        <button type="button" class="btn-perigo" onclick="sairAdmin()">Sair do sistema</button>
+      </nav>
+
+      <div id="abaPainelAdmin">
+        <div class="metricas">
+          <div>
+            <span>Total de apostas</span>
+            <strong id="admTotal">0</strong>
+          </div>
+
+          <div>
+            <span>Pagas</span>
+            <strong id="admPagas">0</strong>
+          </div>
+
+          <div>
+            <span>Arrecadado confirmado</span>
+            <strong id="admArrecadado">R$ 0,00</strong>
+          </div>
+        </div>
+
+        <div class="botoes-admin">
+          <button type="button" onclick="atualizarDadosAdmin()" class="btn-secundario">Atualizar bolão/apostas</button>
+          <button onclick="exportarExcel()" class="btn-principal">Exportar para Excel</button>
+          <button onclick="limparTudo()" class="btn-perigo">Limpar testes</button>
+        </div>
+
+        <div class="table-wrap tabela-admin">
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>WhatsApp</th>
+                <th>Palpite</th>
+                <th>Status</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody id="listaAdmin"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="abaConfigBolao" class="oculto">
+        <section class="config-box">
+          <div class="linha-titulo">
+            <div>
+              <h2>Configurar bolão</h2>
+              <p class="sub">Altere os nomes dos times para o próximo jogo.</p>
+            </div>
+          </div>
+
+          <div class="preview-jogo">
+              <span>Status do bolão</span>
+              <strong id="bolaoAtivoInfo">Carregando...</strong>
+            </div>
+
+          <form id="formConfigBolao">
+            <div class="admin-login-grid">
+              <label>
+                Time da esquerda
+                <input id="timeCasaConfig" type="text" required minlength="2" placeholder="Ex: Brasil" />
+              </label>
+
+              <label>
+                Time da direita
+                <input id="timeForaConfig" type="text" required minlength="2" placeholder="Ex: Haiti" />
+              </label>
+            </div>
+
+            <div class="preview-jogo">
+              <span>Jogo atual</span>
+              <strong id="previewJogoConfig">Brasil x Haiti</strong>
+            </div>
+
+            <div class="botoes-admin">
+              <button class="btn-principal" type="submit">Salvar / criar bolão ativo</button>
+              <button class="btn-perigo" type="button" onclick="encerrarBolaoAtual()">Encerrar bolão atual</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <footer><span>© 2026 — Desenvolvido por Jhoney Souza</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
